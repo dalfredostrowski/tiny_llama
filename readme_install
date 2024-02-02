@@ -1,0 +1,21 @@
+sudo apt-get update
+sudo apt install python3-pip
+#git clone https://github.com/March-08/tiny-llama-ec2.git
+pip install git+https://github.com/huggingface/transformers.git
+pip install accelerate
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+python3
+
+import torch  
+from transformers import pipeline   
+>>> pipe = pipeline("text-generation",model="TinyLlama/TinyLlama-1.1B-Chat-v1.0",torch_dtype=torch.bfloat16,device_map="cpu",)
+
+query="tell me a joke about politicians"
+messages = [{"role": "system","content": "You are a friendly chatbot who always funny and interest},{"role": "user", "content": f"{query}"},]
+messages = [ { "role": "system",  "content": "You are a friendly chatbot who always funny and interesting. You only reply with the actual answer without repeating my question.",},{"role": "user", "content": f"{query}"},]
+
+
+prompt = pipe.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+outputs = pipe(prompt,max_new_tokens=256,do_sample=True,temperature=0.7,top_k=50,top_p=0.95,)
+
+
