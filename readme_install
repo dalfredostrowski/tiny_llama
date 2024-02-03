@@ -17,3 +17,6 @@ python3
 ref
 https://medium.com/towards-data-science/deploy-tiny-llama-on-aws-ec2-f3ff312c896d
 https://stackoverflow.com/questions/61798573/where-does-hugging-faces-transformers-save-models
+https://huggingface.co/docs/hub/en/transformers
+https://huggingface.co/docs/accelerate/en/index
+https://www.techtarget.com/searchenterpriseai/definition/PyTorch
